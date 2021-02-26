@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Services\Xero\Polyfill;
+namespace XeroPHP\Models\Assets;
 
 use XeroPHP\Remote;
+use XeroPHP\Models\Assets\AssetType\BookDepreciationSetting;
 
 class Asset extends Remote\Model
 {
