@@ -364,11 +364,15 @@ class Response
                     $this->elements[] = $root_child;
 
                     break;
+                case 'items':
+                    $this->elements = $root_child;
+
+                    break;
 
                 default:
                     //Happy to make the assumption that there will only be one
                     //root node with > than 2D children.
-                    if (is_array($root_child)) {
+                    if ( ($child_index != 'pagination') && (is_array($root_child)) ) {
                         foreach ($root_child as $element) {
                             $this->elements[] = $element;
                         }
