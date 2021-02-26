@@ -279,7 +279,7 @@ class Query
         );
         $request = new Request($this->app, $url, Request::METHOD_GET);
 
-        if (! empty($from_class::getHeaders())) {
+        if (method_exists($from_class, 'getHeaders')) {
             foreach ($from_class::getHeaders() as $header) {
                 $request->setHeader($header['type'], $header['content']);
             }
