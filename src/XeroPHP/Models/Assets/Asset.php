@@ -59,6 +59,23 @@ class Asset extends Remote\Model
     }
 
     /**
+     * Get headers for the request.
+     */
+    public static function getHeaders()
+    {
+        return [
+            [
+                'type' => Remote\Request::HEADER_CONTENT_TYPE,
+                'content' => Remote\Request::CONTENT_TYPE_JSON
+            ],
+            [
+                'type' => Remote\Request::HEADER_ACCEPT,
+                'content' => Remote\Request::CONTENT_TYPE_JSON
+            ]
+        ];
+    }
+
+    /**
      * Get the properties of the object.  Indexed by constants
      *  [0] - Mandatory
      *  [1] - Type

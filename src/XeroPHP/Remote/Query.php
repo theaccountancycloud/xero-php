@@ -279,6 +279,12 @@ class Query
         );
         $request = new Request($this->app, $url, Request::METHOD_GET);
 
+        if (! empty($from_class::getHeaders())) {
+            foreach ($from_class::getHeaders() as $header) {
+                $request->setHeader($header['type'], $header['content']);
+            }
+        }
+
         // Add params
         foreach ($this->params as $key => $value) {
             $request->setParameter($key, $value);
