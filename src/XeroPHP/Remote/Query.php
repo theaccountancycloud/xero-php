@@ -279,7 +279,7 @@ class Query
         );
         $request = new Request($this->app, $url, Request::METHOD_GET);
 
-        if (property_exists($from_class, 'has_json_request') && $from_class->has_json_request) {
+        if (property_exists($from_class, 'has_json_request') && $from_class::$has_json_request) {
             $request->setHeader(Request::HEADER_CONTENT_TYPE, Request::CONTENT_TYPE_JSON);
             $request->setHeader(Request::HEADER_ACCEPT, Request::CONTENT_TYPE_JSON);
         }

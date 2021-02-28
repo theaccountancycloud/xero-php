@@ -7,7 +7,7 @@ use XeroPHP\Models\Assets\AssetType\BookDepreciationSetting;
 
 class Asset extends Remote\Model
 {
-    public $has_json_request = true;
+    public static $has_json_request = true;
 
     /**
      * Get the resource uri of the class (Contacts) etc.
@@ -59,7 +59,7 @@ class Asset extends Remote\Model
             Remote\Request::METHOD_POST,
         ];
     }
-    
+
     /**
      * Get the properties of the object.  Indexed by constants
      *  [0] - Mandatory
