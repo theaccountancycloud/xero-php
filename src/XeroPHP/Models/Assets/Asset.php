@@ -7,6 +7,8 @@ use XeroPHP\Models\Assets\AssetType\BookDepreciationSetting;
 
 class Asset extends Remote\Model
 {
+    public $has_json_request = true;
+
     /**
      * Get the resource uri of the class (Contacts) etc.
      *
@@ -57,24 +59,7 @@ class Asset extends Remote\Model
             Remote\Request::METHOD_POST,
         ];
     }
-
-    /**
-     * Get headers for the request.
-     */
-    public static function getHeaders()
-    {
-        return [
-            [
-                'type' => Remote\Request::HEADER_CONTENT_TYPE,
-                'content' => Remote\Request::CONTENT_TYPE_JSON
-            ],
-            [
-                'type' => Remote\Request::HEADER_ACCEPT,
-                'content' => Remote\Request::CONTENT_TYPE_JSON
-            ]
-        ];
-    }
-
+    
     /**
      * Get the properties of the object.  Indexed by constants
      *  [0] - Mandatory
