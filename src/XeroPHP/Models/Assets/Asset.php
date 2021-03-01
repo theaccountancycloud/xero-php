@@ -4,12 +4,98 @@ namespace XeroPHP\Models\Assets;
 
 use XeroPHP\Remote;
 use XeroPHP\Models\Assets\AssetType\BookDepreciationSetting;
-
+use XeroPHP\Models\Assets\AssetType\BookDepreciationDetail;
 use XeroPHP\Traits\HasJsonRequestTrait;
 
 class Asset extends Remote\Model
 {
     use HasJsonRequestTrait;
+
+    /**
+     * The Xero-generated Id for the asset.
+     *
+     * @property string assetId
+     */
+    
+    /**
+     * The name of the asset.
+     *
+     * @property string assetName
+     */
+    
+    /**
+     * The number of the asset.
+     *
+     * @property string assetNumber
+     */
+    
+    /**
+     * The date the asset was purchased YYYY-MM-DD.
+     *
+     * @property \DateTimeInterface purchaseDate
+     */
+    
+    /**
+     * The purchase price of the asset.
+     *
+     * @property float purchasePrice
+     */
+    
+    /**
+     * The price the asset was disposed at.
+     *
+     * @property float disposalPrice
+     */
+
+    /**
+     * The date the asset was disposed.
+     *
+     * @property \DateTimeInterface disposalDate
+     */
+
+    /**
+     * See Asset Status Codes.
+     *
+     * @property string assetStatus
+     */
+
+    /**
+     * The date the asset’s warranty expires (if needed) YYYY-MM-DD.
+     *
+     * @property \DateTimeInterface warrantyExpiryDate
+     */
+
+    /**
+     * The asset's serial number.
+     *
+     * @property string serialNumber
+     */
+    
+    /**
+     * See Book Depreciation Settings.
+     *
+     * @property BookDepreciationSetting bookDepreciationSetting
+     */
+    
+    /**
+     * See Book Depreciation Detail.
+     *
+     * @property BookDepreciationDetail bookDepreciationDetail
+     */
+    
+    /**
+     * Boolean to indicate whether depreciation can be rolled back for this asset individually. 
+     * This is true if it doesn't have 'legacy' journal entries and if there is no lock period 
+     * that would prevent this asset from rolling back.
+     *
+     * @property boolean canRollBack
+     */
+    
+    /**
+     * The accounting value of the asset.
+     *
+     * @property float accountingBookValue
+     */
 
     /**
      * Get the resource uri of the class (Contacts) etc.
@@ -108,7 +194,7 @@ class Asset extends Remote\Model
     /**
      * @param string $value
      *
-     * @return AssetType
+     * @return Asset
      */
     public function setAssetName($value)
     {
@@ -129,7 +215,7 @@ class Asset extends Remote\Model
     /**
      * @param string $value
      *
-     * @return AssetType
+     * @return Asset
      */
     public function setAssetId($value)
     {
