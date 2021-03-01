@@ -280,7 +280,7 @@ class Asset extends Remote\Model
      */
     public function getdisposalPrice()
     {
-        return $this->_data['getdisposalPrice'];
+        return $this->_data['disposalPrice'];
     }
 
     /**
@@ -288,7 +288,7 @@ class Asset extends Remote\Model
      */
     public function getdisposalDate()
     {
-        return $this->_data['getdisposalDate'];
+        return $this->_data['disposalDate'];
     }
 
     /**
