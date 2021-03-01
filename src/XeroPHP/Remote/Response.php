@@ -344,46 +344,53 @@ class Response
     {
         $json = json_decode($this->response_body, true);
 
-        foreach ($json as $child_index => $root_child) {
-            switch ((string) $child_index) {
-                case 'ErrorNumber':
-                    $this->root_error['code'] = $root_child;
+        $is_associative_array = is_array($json) && count(array_filter(array_keys($json), 'is_string')) > 0;
 
-                    break;
-                case 'Type':
-                    $this->root_error['type'] = $root_child;
+        if ($is_associative_array) {
+            foreach ($json as $child_index => $root_child) {
+                switch ((string) $child_index) {
+                    case 'ErrorNumber':
+                        $this->root_error['code'] = $root_child;
 
-                    break;
-                case 'Message':
-                    $this->root_error['message'] = $root_child;
+                        break;
+                    case 'Type':
+                        $this->root_error['type'] = $root_child;
 
-                    break;
-                case 'Payslip':
-                case 'PayItems':
-                    // some xero endpoints are 1D so we can parse them straight away
-                    $this->elements[] = $root_child;
+                        break;
+                    case 'Message':
+                        $this->root_error['message'] = $root_child;
 
-                    break;
-                case 'items':
-                    $this->elements = $root_child;
+                        break;
+                    case 'Payslip':
+                    case 'PayItems':
+                        // some xero endpoints are 1D so we can parse them straight away
+                        $this->elements[] = $root_child;
 
-                    break;
-                case '0':
-                    // the asset types endpoint returns an indexed array with no root node
-                    // 0 in a switch evaluates to false
-                    $this->elements[] = $root_child;
+                        break;
+                    case 'items':
+                        $this->elements = $root_child;
 
-                    break;
+                        break;
+                    case '0':
+                        // the asset types endpoint returns an indexed array with no root node
+                        // 0 in a switch evaluates to false
+                        $this->elements[] = $root_child;
 
-                default:
-                    //Happy to make the assumption that there will only be one
-                    //root node with > than 2D children.
-                    if ( ($child_index != 'pagination') && (is_array($root_child)) ) {
-                        foreach ($root_child as $element) {
-                            $this->elements[] = $element;
+                        break;
+
+                    default:
+                        //Happy to make the assumption that there will only be one
+                        //root node with > than 2D children.
+                        if ( ($child_index != 'pagination') && (is_array($root_child)) ) {
+                            foreach ($root_child as $element) {
+                                $this->elements[] = $element;
+                            }
                         }
-                    }
+                }
             }
+        } else {
+            // the asset types endpoint returns an indexed array with no root node
+            $this->elements = $json;
         }
     }
 
