@@ -186,7 +186,15 @@ class Asset extends Remote\Model
     /**
      * @return string
      */
-    public function getAssetName()
+    public function getassetId()
+    {
+        return $this->_data['assetId'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getassetName()
     {
         return $this->_data['assetName'];
     }
@@ -196,7 +204,7 @@ class Asset extends Remote\Model
      *
      * @return Asset
      */
-    public function setAssetName($value)
+    public function setassetName($value)
     {
         $this->propertyUpdated('assetName', $value);
         $this->_data['assetName'] = $value;
@@ -207,9 +215,9 @@ class Asset extends Remote\Model
     /**
      * @return string
      */
-    public function getAssetId()
+    public function getassetNumber()
     {
-        return $this->_data['assetId'];
+        return $this->_data['assetNumber'];
     }
 
     /**
@@ -217,10 +225,131 @@ class Asset extends Remote\Model
      *
      * @return Asset
      */
-    public function setAssetId($value)
+    public function setassetNumber($value)
     {
-        $this->propertyUpdated('assetId', $value);
-        $this->_data['assetId'] = $value;
+        $this->propertyUpdated('assetNumber', $value);
+        $this->_data['assetNumber'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTimeInterface
+     */
+    public function getpurchaseDate()
+    {
+        return $this->_data['purchaseDate'];
+    }
+
+    /**
+     * @param \DateTimeInterface $value
+     *
+     * @return Asset
+     */
+    public function setpurchaseDate($value)
+    {
+        $this->propertyUpdated('purchaseDate', $value);
+        $this->_data['purchaseDate'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getpurchasePrice()
+    {
+        return $this->_data['purchasePrice'];
+    }
+
+    /**
+     * @param float $value
+     *
+     * @return Asset
+     */
+    public function setpurchasePrice($value)
+    {
+        $this->propertyUpdated('purchasePrice', $value);
+        $this->_data['purchasePrice'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getdisposalPrice()
+    {
+        return $this->_data['getdisposalPrice'];
+    }
+
+    /**
+     * @return \DateTimeInterface
+     */
+    public function getdisposalDate()
+    {
+        return $this->_data['getdisposalDate'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getassetStatus()
+    {
+        return $this->_data['assetStatus'];
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return Asset
+     */
+    public function setassetStatus($value)
+    {
+        $this->propertyUpdated('assetStatus', $value);
+        $this->_data['assetStatus'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTimeInterface
+     */
+    public function getwarrantyExpiryDate()
+    {
+        return $this->_data['warrantyExpiryDate'];
+    }
+
+    /**
+     * @param \DateTimeInterface $value
+     *
+     * @return Asset
+     */
+    public function setwarrantyExpiryDate($value)
+    {
+        $this->propertyUpdated('warrantyExpiryDate', $value);
+        $this->_data['warrantyExpiryDate'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getserialNumber()
+    {
+        return $this->_data['serialNumber'];
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return Asset
+     */
+    public function setserialNumber($value)
+    {
+        $this->propertyUpdated('serialNumber', $value);
+        $this->_data['serialNumber'] = $value;
 
         return $this;
     }
