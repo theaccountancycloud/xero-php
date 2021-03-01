@@ -345,7 +345,7 @@ class Response
         $json = json_decode($this->response_body, true);
 
         foreach ($json as $child_index => $root_child) {
-            switch ($child_index) {
+            switch ((string) $child_index) {
                 case 'ErrorNumber':
                     $this->root_error['code'] = $root_child;
 
@@ -366,6 +366,12 @@ class Response
                     break;
                 case 'items':
                     $this->elements = $root_child;
+
+                    break;
+                case '0':
+                    // the asset types endpoint returns an indexed array with no root node
+                    // 0 in a switch evaluates to false
+                    $this->elements[] = $root_child;
 
                     break;
 
