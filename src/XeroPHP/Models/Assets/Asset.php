@@ -5,9 +5,11 @@ namespace XeroPHP\Models\Assets;
 use XeroPHP\Remote;
 use XeroPHP\Models\Assets\AssetType\BookDepreciationSetting;
 
+use XeroPHP\Traits\HasJsonRequestTrait;
+
 class Asset extends Remote\Model
 {
-    public static $has_json_request = true;
+    use HasJsonRequestTrait;
 
     /**
      * Get the resource uri of the class (Contacts) etc.
@@ -73,14 +75,18 @@ class Asset extends Remote\Model
     public static function getProperties()
     {
         return [
+            'assetId' => [false, self::PROPERTY_TYPE_GUID, null, false, false],
             'assetName' => [true, self::PROPERTY_TYPE_STRING, null, false, false],
             'assetNumber' => [true, self::PROPERTY_TYPE_STRING, null, false, false],
-            'assetId' => [false, self::PROPERTY_TYPE_GUID, null, false, false],
             'purchaseDate' => [false, self::PROPERTY_TYPE_DATE, '\\DateTimeInterface', false, false],
             'purchasePrice' => [false, self::PROPERTY_TYPE_FLOAT, null, false, false],
             'disposalPrice' => [false, self::PROPERTY_TYPE_FLOAT, null, false, false],
+            'disposalDate' => [false, self::PROPERTY_TYPE_DATE, '\\DateTimeInterface', false, false],
             'assetStatus' => [false, self::PROPERTY_TYPE_STRING, null, false, false],
-            'bookDepreciationSetting' => [true, self::PROPERTY_TYPE_OBJECT, 'Assets\\AssetType\\BookDepreciationSetting', false, false],
+            'warrantyExpiryDate' => [false, self::PROPERTY_TYPE_DATE, '\\DateTimeInterface', false, false],
+            'serialNumber' => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'bookDepreciationSetting' => [false, self::PROPERTY_TYPE_OBJECT, 'Assets\\AssetType\\BookDepreciationSetting', false, false],
+            'bookDepreciationDetail' => [false, self::PROPERTY_TYPE_OBJECT, 'Assets\\AssetType\\BookDepreciationDetail', false, false],
             'canRollback' => [false, self::PROPERTY_TYPE_BOOLEAN, null, false, false],
             'accountingBookValue' => [false, self::PROPERTY_TYPE_FLOAT, null, false, false]
         ];
@@ -94,7 +100,7 @@ class Asset extends Remote\Model
     /**
      * @return string
      */
-    public function getassetName()
+    public function getAssetName()
     {
         return $this->_data['assetName'];
     }
@@ -104,7 +110,7 @@ class Asset extends Remote\Model
      *
      * @return AssetType
      */
-    public function setassetName($value)
+    public function setAssetName($value)
     {
         $this->propertyUpdated('assetName', $value);
         $this->_data['assetName'] = $value;
