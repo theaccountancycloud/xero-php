@@ -371,12 +371,6 @@ class Response
                         $this->elements = $root_child;
 
                         break;
-                    case '0':
-                        // the asset types endpoint returns an indexed array with no root node
-                        // 0 in a switch evaluates to false
-                        $this->elements[] = $root_child;
-
-                        break;
 
                     default:
                         //Happy to make the assumption that there will only be one
