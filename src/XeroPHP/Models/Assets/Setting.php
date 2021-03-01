@@ -3,9 +3,12 @@
 namespace XeroPHP\Models\Assets;
 
 use XeroPHP\Remote;
+use XeroPHP\Traits\HasJsonRequestTrait;
 
 class Setting extends Remote\Model
 {
+    use HasJsonRequestTrait;
+
     /**
      * The prefix used for fixed asset numbers (“FA-” by default).
      *

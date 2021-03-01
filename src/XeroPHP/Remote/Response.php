@@ -348,7 +348,7 @@ class Response
 
         if ($is_associative_array) {
             foreach ($json as $child_index => $root_child) {
-                switch ((string) $child_index) {
+                switch ($child_index) {
                     case 'ErrorNumber':
                         $this->root_error['code'] = $root_child;
 
