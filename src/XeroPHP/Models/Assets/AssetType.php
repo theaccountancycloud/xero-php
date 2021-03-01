@@ -4,9 +4,12 @@ namespace XeroPHP\Models\Assets;
 
 use XeroPHP\Remote;
 use XeroPHP\Models\Assets\AssetType\BookDepreciationSetting;
+use XeroPHP\Traits\HasJsonRequestTrait;
 
 class AssetType extends Remote\Model
 {
+    use HasJsonRequestTrait;
+    
     /**
      * The name of the asset type.
      *
