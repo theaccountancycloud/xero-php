@@ -353,4 +353,20 @@ class Asset extends Remote\Model
 
         return $this;
     }
+
+    /**
+     * @return BookDepreciationDetail
+     */
+    public function getbookDepreciationDetail()
+    {
+        return $this->_data['bookDepreciationDetail'];
+    }
+
+    /**
+     * @return BookDepreciationSetting
+     */
+    public function getbookDepreciationSetting()
+    {
+        return $this->_data['bookDepreciationSetting'];
+    }
 }
