@@ -127,4 +127,60 @@ class BookDepreciationDetail extends Remote\Model
     {
         return false;
     }
+
+    /**
+     * @return float
+     */
+    public function getcurrentCapitalGain()
+    {
+        return $this->_data['currentCapitalGain'];
+    }
+
+    /**
+     * @return float
+     */
+    public function getcurrentGainLoss()
+    {
+        return $this->_data['currentGainLoss'];
+    }
+
+    /**
+     * @return \DateTimeInterface
+     */
+    public function getdepreciationStartDate()
+    {
+        return $this->_data['depreciationStartDate'];
+    }
+
+    /**
+     * @return float
+     */
+    public function getcostLimit()
+    {
+        return $this->_data['costLimit'];
+    }
+
+    /**
+     * @return float
+     */
+    public function getresidualValue()
+    {
+        return $this->_data['residualValue'];
+    }
+
+    /**
+     * @return float
+     */
+    public function getpriorAccumDepreciationAmount()
+    {
+        return $this->_data['priorAccumDepreciationAmount'];
+    }
+
+    /**
+     * @return float
+     */
+    public function getcurrentAccumDepreciationAmount()
+    {
+        return $this->_data['currentAccumDepreciationAmount'];
+    }
 }
